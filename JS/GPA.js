@@ -29,9 +29,9 @@ function updateCoursesUI() {
   courses = [];
 
   for (let i = 1; i <= count; i++) {
-    const courseDiv = document.createElement('div');
-    courseDiv.classList.add('course');
-    courseDiv.innerHTML = `
+    const coursesection = document.createElement('section');
+    coursesection.classList.add('course');
+    coursesection.innerHTML = `
       <h3>
         <span class="course-name">المادة ${i}</span>
         <input type="text" class="course-name-input hidden" placeholder="أدخل اسم المادة">
@@ -64,14 +64,14 @@ function updateCoursesUI() {
 
       </select>
 
-      <div class="repeated-course hidden">
+      <section class="repeated-course hidden">
         <label><i class="fas fa-redo-alt"></i> هل المادة معادة؟</label>
         <select class="course-repeated">
           <option value="no">لا</option>
           <option value="yes">نعم</option>
         </select>
 
-        <div class="old-course hidden">
+        <section class="old-course hidden">
           <label><i class="fas fa-tag"></i> رمز المادة القديمة:</label>
           <select class="old-course-code">
             <option value="ج+">ج+</option>
@@ -82,29 +82,29 @@ function updateCoursesUI() {
             <option value="د-">د-</option>
             <option value="هـ">هـ</option>
           </select>
-        </div>
-      </div>
+        </section>
+      </section>
     `;
-    coursesContainer.appendChild(courseDiv);
+    coursesContainer.appendChild(coursesection);
 
-    const repeatedDiv = courseDiv.querySelector('.repeated-course');
-    const repeatedSelect = courseDiv.querySelector('.course-repeated');
-    const oldCourseDiv = courseDiv.querySelector('.old-course');
+    const repeatedsection = coursesection.querySelector('.repeated-course');
+    const repeatedSelect = coursesection.querySelector('.course-repeated');
+    const oldCoursesection = coursesection.querySelector('.old-course');
 
     repeatedSelect.addEventListener('change', () => {
       if (repeatedSelect.value === 'yes') {
-        oldCourseDiv.classList.remove('hidden');
+        oldCoursesection.classList.remove('hidden');
       } else {
-        oldCourseDiv.classList.add('hidden');
+        oldCoursesection.classList.add('hidden');
       }
     });
 
     courses.push({
-      name: courseDiv.querySelector('.course-name'), // تخزين اسم المادة
-      code: courseDiv.querySelector('.course-code'),
-      hours: courseDiv.querySelector('.course-hours'),
+      name: coursesection.querySelector('.course-name'), // تخزين اسم المادة
+      code: coursesection.querySelector('.course-code'),
+      hours: coursesection.querySelector('.course-hours'),
       repeated: repeatedSelect,
-      oldCode: courseDiv.querySelector('.old-course-code')
+      oldCode: coursesection.querySelector('.old-course-code')
     });
   }
 
@@ -114,13 +114,13 @@ function updateCoursesUI() {
 
 function toggleRepeatedOptions() {
   const isFirstSemester = isFirstSemesterSelect.value === 'yes';
-  const repeatedDivs = document.querySelectorAll('.repeated-course');
+  const repeatedsections = document.querySelectorAll('.repeated-course');
 
-  repeatedDivs.forEach(div => {
+  repeatedsections.forEach(section => {
     if (isFirstSemester) {
-      div.classList.add('hidden');
+      section.classList.add('hidden');
     } else {
-      div.classList.remove('hidden');
+      section.classList.remove('hidden');
     }
   });
 }
@@ -329,7 +329,7 @@ function displayResult(newGPA, totalHours, newCourses, previousGPA, previousHour
 
 
 function getGPACategory(gpa) {
-  if (gpa >= 3.65 && gpa <= 4.00) return 'امتياز';
+  if (gpa >= 3.65 && gpa <= 4.00) return 'ممتاز';
   if (gpa >= 3.00 && gpa <= 3.64) return 'جيد جداً';
   if (gpa >= 2.50 && gpa <= 2.99) return 'جيد';
   if (gpa >= 2.00 && gpa <= 2.49) return 'مقبول';
@@ -413,4 +413,32 @@ navItemEls.forEach(navItemEl => {
   });
 });
 
+
+
+const dropdownContainer = document.getElementById("dropdown-container");
+const dropdown = document.getElementById("dropdown");
+const gpaItem = document.getElementById("gpa-item");
+let isOpen = false; // متغير لتتبع حالة القائمة المنسدلة
+
+dropdown.addEventListener("click", () => {
+    isOpen = !isOpen; // تبديل حالة الفتح والإغلاق
+    if (isOpen) {
+        gpaItem.classList.add("add-margin");
+    } else {
+        gpaItem.classList.remove("add-margin");
+    }
+    dropdownContainer.classList.toggle("open");
+});
+
+dropdownContainer.addEventListener("mouseleave", () => {
+    if (!dropdownContainer.contains(event.relatedTarget)) {
+        isOpen = false;
+        gpaItem.classList.remove("add-margin");
+        dropdownContainer.classList.remove("open");
+    }
+});
+
+dropdownContainer.addEventListener("mouseenter", () => {
+    clearTimeout(timeoutId);
+});
 

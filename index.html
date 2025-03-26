@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ar">
 
 <head>
   <meta charset="UTF-8">
@@ -22,8 +22,8 @@
 <body>
 
   <header class="header">
-    <div class="bottom-bar">
-      <div class="bottom-bar__content">
+    <section class="bottom-bar">
+      <section class="bottom-bar__content">
         <a href="#" class="logo">
           <img class="logo__img" src="IMG/Nashama.webp" alt="logo">
 
@@ -31,9 +31,18 @@
 
         <nav class="nav">
           <ul class="nav__list">
-            <li class="nav__item">
-              <a class="nav__link" href="section.html">اقسام الكلية</a>
-            </li>
+            <section class="dropdown">
+              <a class="nav__link" href="#">أقسام الكلية</a>
+              <section class="dropdown-content">
+                <a href="#">إدارة الأعمال</a>
+                <a href="#">المحاسبة</a>
+                <a href="#">التمويل</a>
+                <a href="#">التسويق</a>
+                <a href="#">نظم المعلومات الإدارية</a>
+                <a href="#">الإدارة العامة</a>
+                <a href="#">اقتصاد الاعمال</a>
+              </section>
+            </section>
             <li class="nav__item">
               <a class="nav__link" href="GPA.html">المعدل الجامعي</a>
             </li>
@@ -41,18 +50,18 @@
               <a class="nav__link" href="NEWS.html">اخبار الجامعة</a>
             </li>
             <li class="nav__item">
-              <a class="btn" href="index.html">الرئيسي</a>
+              <a class="btn" href="index.html">الرئيسية</a>
             </li>
           </ul>
         </nav>
 
-        <div class="hamburger">
-          <div class="bar"></div>
-          <div class="bar"></div>
-          <div class="bar"></div>
-        </div>
-      </div>
-    </div>
+        <section class="hamburger">
+          <section class="bar"></section>
+          <section class="bar"></section>
+          <section class="bar"></section>
+        </section>
+      </section>
+    </section>
   </header>
 
 </body>

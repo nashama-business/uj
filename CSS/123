@@ -1,0 +1,61 @@
+@media (max-width: 650px) {
+    .nav {
+        position: fixed;
+        top: 60px;
+        left: -100%;
+        transform: translateX(-50%);
+        width: 90%; /* تصغير العرض قليلاً ليبدو أجمل */
+        max-width: 400px; /* تحديد حد أقصى للعرض */
+        padding: 15px 20px; /* زيادة التباعد الداخلي */
+        text-align: center; /* توسيط النصوص */
+    
+        /* 🎨 تحسين الخلفية الزجاجية الضبابية */
+        background: rgba(255, 255, 255, 0.15); /* جعل الخلفية أكثر شفافية */
+        backdrop-filter: blur(30px); /* زيادة التمويه */
+        -webkit-backdrop-filter: blur(30px); /* دعم المتصفحات القديمة */
+        border-radius: 15px; /* جعل الزوايا أكثر نعومة */
+        border: 1px solid rgba(255, 255, 255, 0.2); /* تقليل وضوح الحدود */
+        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15); /* تحسين الظل */
+    
+        /* 🔥 تحسين الحركة */
+        transition: left 0.4s ease-in-out, opacity 0.3s ease-in-out;
+    }
+
+    .nav__list {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        row-gap: 20px;
+        padding: 10px 0;
+    }
+
+    .nav__link {
+        font-size: 15px; /* تكبير الخط قليلاً ليكون أوضح */
+        font-weight: bold;
+        color: #333; /* تحسين التباين */
+        text-transform: uppercase;
+        transition: color 0.2s ease-in-out;
+    }
+
+    .nav__link:hover {
+        color: #555; /* تأثير عند التمرير */
+    }
+
+    .btn {
+        font-size: 12px;
+        padding: 8px 20px;
+        border-radius: 8px;
+        background: rgba(0, 0, 0, 0.1);
+        border: 1px solid rgba(255, 255, 255, 0.4);
+        transition: all 0.2s ease-in-out;
+    }
+
+    .btn:hover {
+        background: rgba(0, 0, 0, 0.2);
+    }
+
+    .hamburger {
+        display: block;
+        cursor: pointer;
+    }
+}

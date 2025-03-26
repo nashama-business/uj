@@ -42,7 +42,17 @@ body {
 }
 
 .bottom-bar {
-  background-color: rgb(176, 134, 153);
+  background-color: rgba(176, 134, 153, 0.3);
+  /* جعل اللون شفاف */
+  backdrop-filter: blur(10px);
+  /* إضافة تمويه */
+
+  bottom: 0;
+  /* تثبيته في الأسفل */
+  left: 0;
+
+  border-top: 1px solid rgba(255, 255, 255, 0.2);
+  /* إضافة خط علوي شفاف */
 }
 
 .bottom-bar__content {
@@ -91,7 +101,7 @@ body {
 
 .btn {
   color: #fff;
-  background-color: #0071e3;
+  background-color: #76074C;
   padding: 8px 20px;
   border-radius: 1000px;
   text-transform: uppercase;
@@ -102,7 +112,7 @@ body {
 }
 
 .btn:hover {
-  background-color: rgb(28, 128, 228);
+  background-color: #EE161F;
 }
 
 .hamburger {
@@ -136,34 +146,140 @@ body {
   transform: translateY(-7px) rotate(-45deg);
 }
 
-/* MEDIA QUERIES */
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f9f9f9;
+  min-width: 150px;
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+  z-index: 1;
+  right: 0;
+  text-align: center;
+  border-radius: 25px;
+  /* إضافة هذه الخاصية لجعل الحواف ناعمة */
+  overflow: hidden;
+  /* يمنع ظهور حواف حادة عند الحواف الدائرية */
+  top: 18px;
+}
+
+.dropdown-content a {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+.dropdown-content a:hover {
+  background-color: #f1f1f1;
+}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
+.nav__link {
+  text-decoration: none;
+  color: black;
+}
+
 @media (max-width: 650px) {
   .nav {
     position: fixed;
-    top: 65px;
+    top: 75px;
     left: -100%;
     transform: translateX(-50%);
-    background-color: rgb(176, 134, 153);
-    width: 100%;
-    padding: 10px 0 25px;
+    width: 90%;
+    /* تصغير العرض قليلاً ليبدو أجمل */
+    max-width: 400px;
+    /* تحديد حد أقصى للعرض */
+    padding: 15px 20px;
+    /* زيادة التباعد الداخلي */
+    text-align: center;
+    /* توسيط النصوص */
+
+    /* 🎨 تحسين الخلفية الزجاجية الضبابية */
+    background: rgba(255, 255, 255, 0.75);
+    /* جعل الخلفية أكثر شفافية */
+    backdrop-filter: blur(30px);
+    /* زيادة التمويه */
+    -webkit-backdrop-filter: blur(30px);
+    /* دعم المتصفحات القديمة */
+    border-radius: 15px;
+    /* جعل الزوايا أكثر نعومة */
+    border: 1px solid rgba(255, 255, 255, 0.99);
+    /* تقليل وضوح الحدود */
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+    /* تحسين الظل */
+
+    /* 🔥 تحسين الحركة */
+    transition: left 0.4s ease-in-out, opacity 0.3s ease-in-out;
   }
 
   .nav__list {
+    display: flex;
     flex-direction: column;
     align-items: center;
     row-gap: 20px;
+    padding: 10px 0;
   }
 
   .nav__link {
-    font-size: 14px;
+    font-size: 15px;
+    /* تكبير الخط قليلاً ليكون أوضح */
+    font-weight: bold;
+    color: #333;
+    /* تحسين التباين */
+    text-transform: uppercase;
+    transition: color 0.2s ease-in-out;
+  }
+
+  .nav__link:hover {
+    color: #555;
+    /* تأثير عند التمرير */
   }
 
   .btn {
-    font-size: 11px;
-    padding: 7px 17px;
+    font-size: 12px;
+    padding: 8px 20px;
+    border-radius: 8px;
+    background: #76074C;
+    border: 1px solid #D02024;
+    transition: all 0.2s ease-in-out;
+  }
+
+  .btn:hover {
+    background: rgba(0, 0, 0, 0.2);
   }
 
   .hamburger {
     display: block;
+    cursor: pointer;
   }
+
+  .dropdown-content {
+    top: 20px;
+    size: 0.1px;
+    right: -50px;
+    background-color: transparent;
+    /* جعل الخلفية شفافة */
+    box-shadow: none;
+    /* إزالة الظل */
+  }
+
+  .dropdown:focus-within {
+    margin-bottom: 300px;
+    /* أو أي قيمة أخرى تناسبك */
+    transition: margin-top 0.3s ease;
+  }
+
+  .dropdown {
+    margin-bottom: 0;
+    /* إعادة الهامش إلى القيمة الافتراضية */
+  }
+
 }
