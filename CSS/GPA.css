@@ -470,7 +470,7 @@ button {
     }
 
     .dropdown:focus-within {
-        margin-bottom: 300px;
+        margin-bottom: 350px;
         /* أو أي قيمة أخرى تناسبك */
         transition: margin-top 0.3s ease;
     }
