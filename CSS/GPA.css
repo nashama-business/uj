@@ -430,14 +430,14 @@ button {
         font-size: 15px;
         /* تكبير الخط قليلاً ليكون أوضح */
         font-weight: bold;
-        color: #333;
+        color: #76074C;
         /* تحسين التباين */
         text-transform: uppercase;
         transition: color 0.2s ease-in-out;
     }
 
     .nav__link:hover {
-        color: #555;
+        color: #76074C;
         /* تأثير عند التمرير */
     }
 
@@ -460,7 +460,7 @@ button {
     }
 
     .dropdown-content {
-        top: 20px;
+        top: 30px;
         size: 0.1px;
         right: -50px;
         background-color: transparent;

@@ -155,12 +155,12 @@ body {
   display: none;
   position: absolute;
   background-color: #f9f9f9;
-  min-width: 150px;
+  min-width: 170px;
   box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
   z-index: 1;
   right: 0;
   text-align: center;
-  border-radius: 25px;
+  border-radius: 50px;
   /* إضافة هذه الخاصية لجعل الحواف ناعمة */
   overflow: hidden;
   /* يمنع ظهور حواف حادة عند الحواف الدائرية */
@@ -232,14 +232,14 @@ body {
     font-size: 15px;
     /* تكبير الخط قليلاً ليكون أوضح */
     font-weight: bold;
-    color: #333;
+    color: #76074C;
     /* تحسين التباين */
     text-transform: uppercase;
     transition: color 0.2s ease-in-out;
   }
 
   .nav__link:hover {
-    color: #555;
+    color: #76074C;
     /* تأثير عند التمرير */
   }
 
@@ -262,7 +262,7 @@ body {
   }
 
   .dropdown-content {
-    top: 20px;
+    top: 30px;
     size: 0.1px;
     right: -50px;
     background-color: transparent;
@@ -272,7 +272,7 @@ body {
   }
 
   .dropdown:focus-within {
-    margin-bottom: 300px;
+    margin-bottom: 350px;
     /* أو أي قيمة أخرى تناسبك */
     transition: margin-top 0.3s ease;
   }
