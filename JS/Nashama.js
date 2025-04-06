@@ -14,8 +14,4 @@ navItemEls.forEach(navItemEl => {
   });
 });
 
-const dropdownContainer = document.getElementById("dropdown-container");
-const dropdown = document.getElementById("dropdown");
-const gpaItem = document.getElementById("gpa-item");
-let isOpen = false; // متغير لتتبع حالة القائمة المنسدلة
 

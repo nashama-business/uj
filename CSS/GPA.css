@@ -26,11 +26,9 @@ body {
 .container {
     max-width: 800px;
     width: 90%;
-    background: #FFFFFF;
+    background: none;
     color: #1E191A;
-    padding: 30px;
     border-radius: 12px;
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
     text-align: center;
     margin-top: 80px;
 }
@@ -105,11 +103,7 @@ button:hover {
 
 .result {
     margin-top: 20px;
-    padding: 20px;
-    background: #F9F9F9;
-    border: 1px solid #ddd;
     border-radius: 8px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
     text-align: right;
     animation: fadeIn 0.5s ease-in-out;
 }
@@ -169,9 +163,7 @@ p {
     color: #EE161F;
 }
 
-.container {
-    padding: 20px;
-}
+
 
 button {
     width: 100%;
@@ -299,7 +291,7 @@ button {
 
 .btn {
     color: #fff;
-    background-color: #d12224;
+    background-color: #76074C;
     padding: 8px 20px;
     border-radius: 1000px;
     text-transform: uppercase;
@@ -310,7 +302,7 @@ button {
 }
 
 .btn:hover {
-    background-color: rgb(28, 128, 228);
+    background-color: #EE161F;
 }
 
 .hamburger {
@@ -344,41 +336,9 @@ button {
     transform: translateY(-7px) rotate(-45deg);
 }
 
-.dropdown {
-    position: relative;
-    display: inline-block;
-}
 
-.dropdown-content {
-    display: none;
-    position: absolute;
-    background-color: #f9f9f9;
-    min-width: 150px;
-    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
-    z-index: 1;
-    right: 0;
-    text-align: center;
-    border-radius: 25px;
-    /* إضافة هذه الخاصية لجعل الحواف ناعمة */
-    overflow: hidden;
-    /* يمنع ظهور حواف حادة عند الحواف الدائرية */
-    top: 18px;
-}
 
-.dropdown-content a {
-    color: black;
-    padding: 12px 16px;
-    text-decoration: none;
-    display: block;
-}
 
-.dropdown-content a:hover {
-    background-color: #f1f1f1;
-}
-
-.dropdown:hover .dropdown-content {
-    display: block;
-}
 
 .nav__link {
     text-decoration: none;
@@ -459,25 +419,8 @@ button {
         cursor: pointer;
     }
 
-    .dropdown-content {
-        top: 30px;
-        size: 0.1px;
-        right: -50px;
-        background-color: transparent;
-        /* جعل الخلفية شفافة */
-        box-shadow: none;
-        /* إزالة الظل */
-    }
 
-    .dropdown:focus-within {
-        margin-bottom: 350px;
-        /* أو أي قيمة أخرى تناسبك */
-        transition: margin-top 0.3s ease;
-    }
+    
 
-    .dropdown {
-        margin-bottom: 0;
-        /* إعادة الهامش إلى القيمة الافتراضية */
-    }
 
 }

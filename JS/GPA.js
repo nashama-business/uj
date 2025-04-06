@@ -414,31 +414,3 @@ navItemEls.forEach(navItemEl => {
 });
 
 
-
-const dropdownContainer = document.getElementById("dropdown-container");
-const dropdown = document.getElementById("dropdown");
-const gpaItem = document.getElementById("gpa-item");
-let isOpen = false; // متغير لتتبع حالة القائمة المنسدلة
-
-dropdown.addEventListener("click", () => {
-    isOpen = !isOpen; // تبديل حالة الفتح والإغلاق
-    if (isOpen) {
-        gpaItem.classList.add("add-margin");
-    } else {
-        gpaItem.classList.remove("add-margin");
-    }
-    dropdownContainer.classList.toggle("open");
-});
-
-dropdownContainer.addEventListener("mouseleave", () => {
-    if (!dropdownContainer.contains(event.relatedTarget)) {
-        isOpen = false;
-        gpaItem.classList.remove("add-margin");
-        dropdownContainer.classList.remove("open");
-    }
-});
-
-dropdownContainer.addEventListener("mouseenter", () => {
-    clearTimeout(timeoutId);
-});
-

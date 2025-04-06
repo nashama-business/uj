@@ -146,41 +146,11 @@ body {
   transform: translateY(-7px) rotate(-45deg);
 }
 
-.dropdown {
-  position: relative;
-  display: inline-block;
-}
 
-.dropdown-content {
-  display: none;
-  position: absolute;
-  background-color: #f9f9f9;
-  min-width: 170px;
-  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
-  z-index: 1;
-  right: 0;
-  text-align: center;
-  border-radius: 50px;
-  /* إضافة هذه الخاصية لجعل الحواف ناعمة */
-  overflow: hidden;
-  /* يمنع ظهور حواف حادة عند الحواف الدائرية */
-  top: 18px;
-}
 
-.dropdown-content a {
-  color: black;
-  padding: 12px 16px;
-  text-decoration: none;
-  display: block;
-}
 
-.dropdown-content a:hover {
-  background-color: #f1f1f1;
-}
 
-.dropdown:hover .dropdown-content {
-  display: block;
-}
+
 
 .nav__link {
   text-decoration: none;
@@ -239,7 +209,7 @@ body {
   }
 
   .nav__link:hover {
-    color: #76074C;
+    color: #EE161F;
     /* تأثير عند التمرير */
   }
 
@@ -261,25 +231,8 @@ body {
     cursor: pointer;
   }
 
-  .dropdown-content {
-    top: 30px;
-    size: 0.1px;
-    right: -50px;
-    background-color: transparent;
-    /* جعل الخلفية شفافة */
-    box-shadow: none;
-    /* إزالة الظل */
-  }
+  
 
-  .dropdown:focus-within {
-    margin-bottom: 350px;
-    /* أو أي قيمة أخرى تناسبك */
-    transition: margin-top 0.3s ease;
-  }
-
-  .dropdown {
-    margin-bottom: 0;
-    /* إعادة الهامش إلى القيمة الافتراضية */
-  }
+  
 
 }
