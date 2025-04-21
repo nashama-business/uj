@@ -233,7 +233,7 @@ function calculateGPA() {
       finalStatus = studentStatus;
     }
   }
-
+  
   // إذا كان الفصل الأول يتم احتساب فقط بناءً على المعدل
   else if (isFirstSemesterSelect.value === 'yes') {
     if (newGPA < 2.00) {
@@ -269,11 +269,14 @@ function calculateGPA() {
 
 
 
-  displayResult(newGPA, totalHours, newCourses, previousGPA, previousHours, semesterGPA, semesterHours, finalStatus);
-  setTimeout(() => {
-    resultSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
-  }, 100); // 100ms تأخير بسيط بعد إظهار النتائج
-    resetButton.classList.remove('hidden');
+// عرض النتائج
+displayResult(newGPA, totalHours, newCourses, previousGPA, previousHours, semesterGPA, semesterHours, finalStatus);
+
+// تأخير بسيط حتى يظهر القسم ثم نمرر للأسفل بسلاسة
+setTimeout(() => {
+  document.getElementById('resultSection').scrollIntoView({ behavior: 'smooth', block: 'start' });
+}, 300);
+  resetButton.classList.remove('hidden');
 }
 
 
