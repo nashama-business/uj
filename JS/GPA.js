@@ -270,8 +270,10 @@ function calculateGPA() {
 
 
   displayResult(newGPA, totalHours, newCourses, previousGPA, previousHours, semesterGPA, semesterHours, finalStatus);
-  resultSection.scrollIntoView({ behavior: 'smooth' });
-  resetButton.classList.remove('hidden');
+  setTimeout(() => {
+    resultSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }, 100); // 100ms تأخير بسيط بعد إظهار النتائج
+    resetButton.classList.remove('hidden');
 }
 
 
