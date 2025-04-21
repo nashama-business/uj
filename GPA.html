@@ -53,31 +53,31 @@
       <option value="no">لا</option>
     </select>
 
-<!-- يظهر فقط إذا كانت الإجابة لا -->
-<div id="studentStatusSection" class="hidden">
-  <label for="studentStatus">وضع الطالب:</label>
-  <select id="studentStatus">
-    <option value="دراسة منتظمة">دراسة منتظمة</option>
-    <option value="إنذار أول">إنذار أول</option>
-    <option value="إنذار نهائي">إنذار نهائي</option>
-    <option value="دراسة خاصة 1">دراسة خاصة 1</option>
-    <option value="دراسة خاصة 2">دراسة خاصة 2</option>
-    <option value="دراسة خاصة 3">دراسة خاصة 3</option>
-  </select>
-  
+    <!-- يظهر فقط إذا كانت الإجابة لا -->
+    <div id="studentStatusSection" class="hidden">
+      <label for="studentStatus">وضع الطالب:</label>
+      <select id="studentStatus">
+        <option value="دراسة منتظمة">دراسة منتظمة</option>
+        <option value="إنذار أول">إنذار أول</option>
+        <option value="إنذار نهائي">إنذار نهائي</option>
+        <option value="دراسة خاصة 1">دراسة خاصة 1</option>
+        <option value="دراسة خاصة 2">دراسة خاصة 2</option>
+        <option value="دراسة خاصة 3">دراسة خاصة 3</option>
+      </select>
 
-  <label for="semesterType">نوع الفصل:</label>
-  <select id="semesterType">
-    <option value="نظامي">نظامي</option>
-    <option value="صيفي">صيفي</option>
-  </select>
 
-  <label for="isFirstMajor">هل هذا تخصصك الأول؟</label>
-  <select id="isFirstMajor">
-    <option value="yes">نعم</option>
-    <option value="no">لا</option>
-  </select>
-</div>
+      <label for="semesterType">نوع الفصل:</label>
+      <select id="semesterType">
+        <option value="نظامي">نظامي</option>
+        <option value="صيفي">صيفي</option>
+      </select>
+
+      <label for="isFirstMajor">هل هذا تخصصك الأول؟</label>
+      <select id="isFirstMajor">
+        <option value="yes">نعم</option>
+        <option value="no">لا</option>
+      </select>
+    </div>
 
 
     <!-- قسم إدخال المعدل التراكمي القديم -->
@@ -108,6 +108,7 @@
     <section>
       <button id="calculateButton">احسب المعدل</button>
     </section>
+<br>
 
     <section>
       <button id="resetButton" class="hidden">حساب معدل جديد</button>
@@ -116,7 +117,9 @@
     <!-- قسم عرض النتائج -->
     <section id="resultSection" class="hidden result"></section>
   </div>
-
+  <br>
+  <br>
+  <br>
   <script src="JS/GPA.js"></script>
   <!-- ملف JavaScript -->
 

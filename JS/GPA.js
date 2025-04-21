@@ -223,48 +223,54 @@ function calculateGPA() {
   const semesterType = semesterTypeSelect.value;
   const isFirstMajor = isFirstMajorSelect.value;
 
-let finalStatus = studentStatus;
+  let finalStatus = studentStatus;
 
-// إذا الفصل صيفي، استخدم مباشرة ما اختاره المستخدم بدون حساب
-if (semesterType === 'صيفي') {
-  finalStatus = studentStatus;
-}
-// إذا كان الفصل الأول يتم احتساب فقط بناءً على المعدل
-else if (isFirstSemesterSelect.value === 'yes') {
-  if (newGPA < 2.00) {
-    finalStatus = 'إنذار أول';
-  } else {
-    finalStatus = 'دراسة منتظمة';
-  }
-}
-// باقي الحالات المحسوبة حسب الوضع السابق والمعدل
-else {
-  if (newGPA < 1.00) {
-    finalStatus = isFirstMajor === 'no' ? 'فصل نهائي من الجامعة' : 'فصل من التخصص';
-  } else if (newGPA >= 2.00) {
-    finalStatus = 'دراسة منتظمة';
-  } else if (studentStatus === 'دراسة منتظمة') {
-    finalStatus = 'إنذار أول';
-  } else if (studentStatus === 'إنذار أول') {
-    finalStatus = 'إنذار نهائي';
-  } else if (studentStatus === 'إنذار نهائي') {
-    if (newGPA >= 1.95 && totalHours >= 99) {
-      finalStatus = 'إنذار نهائي';
-    } else if (newGPA < 1.95) {
-      finalStatus = 'دراسة خاصة 1';
+  // إذا الفصل صيفي، استخدم مباشرة ما اختاره المستخدم بدون حساب
+  if (semesterType === 'صيفي') {
+    if (newGPA >= 2.00) {
+      finalStatus = 'دراسة منتظمة';
+    } else {
+      finalStatus = studentStatus;
     }
-  } else if (studentStatus === 'دراسة خاصة 1') {
-    finalStatus = newGPA < 1.75 ? 'فصل نهائي من الجامعة' : 'دراسة خاصة 2';
-  } else if (studentStatus === 'دراسة خاصة 2') {
-    finalStatus = newGPA < 1.90 ? 'فصل نهائي من الجامعة' : (newGPA <= 1.99 ? 'دراسة خاصة 3' : finalStatus);
-  } else if (studentStatus === 'دراسة خاصة 3' && newGPA < 2.00) {
-    finalStatus = 'فصل نهائي من الجامعة';
   }
-}
 
-  
+  // إذا كان الفصل الأول يتم احتساب فقط بناءً على المعدل
+  else if (isFirstSemesterSelect.value === 'yes') {
+    if (newGPA < 2.00) {
+      finalStatus = 'إنذار أول';
+    } else {
+      finalStatus = 'دراسة منتظمة';
+    }
+  }
+  // باقي الحالات المحسوبة حسب الوضع السابق والمعدل
+  else {
+    if (newGPA < 1.00) {
+      finalStatus = isFirstMajor === 'no' ? 'فصل نهائي من الجامعة' : 'فصل من التخصص';
+    } else if (newGPA >= 2.00) {
+      finalStatus = 'دراسة منتظمة';
+    } else if (studentStatus === 'دراسة منتظمة') {
+      finalStatus = 'إنذار أول';
+    } else if (studentStatus === 'إنذار أول') {
+      finalStatus = 'إنذار نهائي';
+    } else if (studentStatus === 'إنذار نهائي') {
+      if (newGPA >= 1.95 && totalHours >= 99) {
+        finalStatus = 'إنذار نهائي';
+      } else if (newGPA < 1.95) {
+        finalStatus = 'دراسة خاصة 1';
+      }
+    } else if (studentStatus === 'دراسة خاصة 1') {
+      finalStatus = newGPA < 1.75 ? 'فصل نهائي من الجامعة' : 'دراسة خاصة 2';
+    } else if (studentStatus === 'دراسة خاصة 2') {
+      finalStatus = newGPA < 1.90 ? 'فصل نهائي من الجامعة' : (newGPA <= 1.99 ? 'دراسة خاصة 3' : finalStatus);
+    } else if (studentStatus === 'دراسة خاصة 3' && newGPA < 2.00) {
+      finalStatus = 'فصل نهائي من الجامعة';
+    }
+  }
+
+
 
   displayResult(newGPA, totalHours, newCourses, previousGPA, previousHours, semesterGPA, semesterHours, finalStatus);
+  resultSection.scrollIntoView({ behavior: 'smooth' });
   resetButton.classList.remove('hidden');
 }
 
@@ -306,6 +312,7 @@ function displayResult(newGPA, totalHours, newCourses, previousGPA, previousHour
       <td>${course.hours}</td>
       <td>${course.gradeValue.toFixed(2)}</td>
     </tr>
+    
   `;
   });
 
@@ -354,6 +361,7 @@ function displayResult(newGPA, totalHours, newCourses, previousGPA, previousHour
       </tbody>
     </table>
   `;
+
   }
 
   function adjustForScreenSize() {
