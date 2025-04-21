@@ -52,6 +52,34 @@
       <option value="yes" selected>نعم</option>
       <option value="no">لا</option>
     </select>
+
+<!-- يظهر فقط إذا كانت الإجابة لا -->
+<div id="studentStatusSection" class="hidden">
+  <label for="studentStatus">وضع الطالب:</label>
+  <select id="studentStatus">
+    <option value="دراسة منتظمة">دراسة منتظمة</option>
+    <option value="إنذار أول">إنذار أول</option>
+    <option value="إنذار نهائي">إنذار نهائي</option>
+    <option value="دراسة خاصة 1">دراسة خاصة 1</option>
+    <option value="دراسة خاصة 2">دراسة خاصة 2</option>
+    <option value="دراسة خاصة 3">دراسة خاصة 3</option>
+  </select>
+  
+
+  <label for="semesterType">نوع الفصل:</label>
+  <select id="semesterType">
+    <option value="نظامي">نظامي</option>
+    <option value="صيفي">صيفي</option>
+  </select>
+
+  <label for="isFirstMajor">هل هذا تخصصك الأول؟</label>
+  <select id="isFirstMajor">
+    <option value="yes">نعم</option>
+    <option value="no">لا</option>
+  </select>
+</div>
+
+
     <!-- قسم إدخال المعدل التراكمي القديم -->
     <div id="previousDataSection" class="hidden">
       <label for="previousGPA"><i class="fas fa-chart-line"></i> المعدل التراكمي :</label>

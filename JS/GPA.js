@@ -20,6 +20,18 @@ const coursesContainer = document.getElementById('coursesContainer');
 const calculateButton = document.getElementById('calculateButton');
 const resetButton = document.getElementById('resetButton');
 const resultSection = document.getElementById('resultSection');
+const studentStatusSection = document.getElementById('studentStatusSection');
+const studentStatusSelect = document.getElementById('studentStatus');
+const semesterTypeSelect = document.getElementById('semesterType');
+const isFirstMajorSelect = document.getElementById('isFirstMajor');
+
+isFirstSemesterSelect.addEventListener('change', () => {
+  const isFirst = isFirstSemesterSelect.value === 'yes';
+  previousDataSection.classList.toggle('hidden', isFirst);
+  studentStatusSection.classList.toggle('hidden', isFirst);
+  toggleRepeatedOptions();
+});
+
 
 let courses = [];
 
@@ -177,7 +189,6 @@ function calculateGPA() {
         return;
       }
 
-      // التحقق من أن ساعات المادة المعادة لا تتجاوز الساعات التراكمية القديمة
       if (hours > previousHours) {
         alert('ساعات المادة المعادة يجب أن تكون أقل من أو تساوي الساعات التراكمية القديمة.');
         return;
@@ -186,7 +197,6 @@ function calculateGPA() {
       if (gradeValue > oldGradeValue) {
         totalPoints -= oldGradeValue * hours;
         totalPoints += gradeValue * hours;
-        totalHours += 0;
         semesterPoints += gradeValue * hours;
         semesterHours += hours;
       }
@@ -209,19 +219,61 @@ function calculateGPA() {
   const newGPA = totalPoints / totalHours;
   const semesterGPA = semesterPoints / semesterHours;
 
-  if (newGPA < 0.50 || newGPA > 4.00) {
-    alert('حدث خطأ في الحساب. يرجى التأكد من صحة البيانات المدخلة.');
-    return;
-  }
+  const studentStatus = studentStatusSelect.value;
+  const semesterType = semesterTypeSelect.value;
+  const isFirstMajor = isFirstMajorSelect.value;
 
-  displayResult(newGPA, totalHours, newCourses, previousGPA, previousHours, semesterGPA, semesterHours);
+let finalStatus = studentStatus;
+
+// إذا الفصل صيفي، استخدم مباشرة ما اختاره المستخدم بدون حساب
+if (semesterType === 'صيفي') {
+  finalStatus = studentStatus;
+}
+// إذا كان الفصل الأول يتم احتساب فقط بناءً على المعدل
+else if (isFirstSemesterSelect.value === 'yes') {
+  if (newGPA < 2.00) {
+    finalStatus = 'إنذار أول';
+  } else {
+    finalStatus = 'دراسة منتظمة';
+  }
+}
+// باقي الحالات المحسوبة حسب الوضع السابق والمعدل
+else {
+  if (newGPA < 1.00) {
+    finalStatus = isFirstMajor === 'no' ? 'فصل نهائي من الجامعة' : 'فصل من التخصص';
+  } else if (newGPA >= 2.00) {
+    finalStatus = 'دراسة منتظمة';
+  } else if (studentStatus === 'دراسة منتظمة') {
+    finalStatus = 'إنذار أول';
+  } else if (studentStatus === 'إنذار أول') {
+    finalStatus = 'إنذار نهائي';
+  } else if (studentStatus === 'إنذار نهائي') {
+    if (newGPA >= 1.95 && totalHours >= 99) {
+      finalStatus = 'إنذار نهائي';
+    } else if (newGPA < 1.95) {
+      finalStatus = 'دراسة خاصة 1';
+    }
+  } else if (studentStatus === 'دراسة خاصة 1') {
+    finalStatus = newGPA < 1.75 ? 'فصل نهائي من الجامعة' : 'دراسة خاصة 2';
+  } else if (studentStatus === 'دراسة خاصة 2') {
+    finalStatus = newGPA < 1.90 ? 'فصل نهائي من الجامعة' : (newGPA <= 1.99 ? 'دراسة خاصة 3' : finalStatus);
+  } else if (studentStatus === 'دراسة خاصة 3' && newGPA < 2.00) {
+    finalStatus = 'فصل نهائي من الجامعة';
+  }
+}
+
+  
+
+  displayResult(newGPA, totalHours, newCourses, previousGPA, previousHours, semesterGPA, semesterHours, finalStatus);
   resetButton.classList.remove('hidden');
 }
 
 
-function displayResult(newGPA, totalHours, newCourses, previousGPA, previousHours, semesterGPA, semesterHours) {
-  const isFirstSemester = isFirstSemesterSelect.value === 'yes'; // تحقق مما إذا كان الفصل الأول
+
+function displayResult(newGPA, totalHours, newCourses, previousGPA, previousHours, semesterGPA, semesterHours, finalStatus) {
+  const isFirstSemester = isFirstSemesterSelect.value === 'yes';
   const gpaCategory = getGPACategory(newGPA);
+
 
   // فحص وجود مواد معادة
   const hasRepeatedCourses = newCourses.some(course => course.oldCode !== '');
@@ -231,6 +283,7 @@ function displayResult(newGPA, totalHours, newCourses, previousGPA, previousHour
   <p><strong>المعدل التراكمي الجديد:</strong> <span class="gpa-value">${newGPA.toFixed(2)}</span></p>
   <p><strong>التقدير:</strong> <span class="category">${gpaCategory}</span></p>
   <p><strong>الساعات التراكمية:</strong> ${totalHours}</p>
+  <p><strong>وضع الطالب:</strong> <span class="category">${finalStatus}</span></p>
   <table>
     <thead>
       <tr>
