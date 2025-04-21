@@ -146,15 +146,22 @@ function calculateGPA() {
     previousGPA = 0;
     previousHours = 0;
   } else {
-    if (isNaN(previousGPA) || previousGPA < 0.5 || previousGPA > 4.0) {
-      alert('يرجى إدخال معدل تراكمي صحيح بين 0.5 و 4.0.');
-      return;
-    }
 
-    if (isNaN(previousHours) || previousHours <= 0) {
-      alert('يرجى إدخال عدد ساعات منجزة صحيح أكبر من صفر.');
+    if (isNaN(previousGPA) || previousGPA < 0.5 || previousGPA > 2.0 || !/^\d+(\.\d{1,2})?$/.test(previousGPA)) {
+      alert('يرجى إدخال معدل تراكمي بين 0.50 و 2.00 ولا يزيد عن خانتين عشريتين.');
       return;
     }
+    
+
+    if (
+      isNaN(previousHours) ||
+      previousHours <= 0 ||
+      !Number.isInteger(previousHours)
+    ) {
+      alert('يرجى إدخال عدد ساعات صحيح (عدد صحيح بدون كسور).');
+      return;
+    }
+    
   }
 
   let totalPoints = previousGPA * previousHours;
@@ -266,6 +273,28 @@ function calculateGPA() {
       finalStatus = 'فصل نهائي من الجامعة';
     }
   }
+
+
+  function handleFirstSemesterStatus(newGPA) {
+  let finalStatus;
+
+  // إذا المعدل التراكمي الجديد أقل من 2.00
+  if (newGPA < 2.00) {
+    finalStatus = 'إنذار أول';
+  } else {
+    finalStatus = 'دراسة منتظمة';
+  }
+
+  return {
+    previousGPA: 0,
+    previousHours: 0,
+    finalStatus: finalStatus
+  };
+}
+
+
+
+  
 
 
 
@@ -412,6 +441,8 @@ function resetForm() {
   updateCoursesUI();
   resultSection.classList.add('hidden');
   resetButton.classList.add('hidden');
+  window.location.reload();
+
 }
 
 function enableCourseNameEditing() {
