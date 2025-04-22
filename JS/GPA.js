@@ -72,8 +72,6 @@ function updateCoursesUI() {
         <option value="4">4</option>
         <option value="5">5</option>
         <option value="6">6</option>
-       
-
       </select>
 
       <section class="repeated-course hidden">
@@ -148,20 +146,20 @@ function calculateGPA() {
   } else {
 
     if (isNaN(previousGPA) || previousGPA < 0.5 || previousGPA > 2.0 || !/^\d+(\.\d{1,2})?$/.test(previousGPA)) {
-      alert('يرجى إدخال معدل تراكمي بين 0.50 و 2.00 ولا يزيد عن خانتين عشريتين.');
+      alert('يرجى إدخال معدل تراكمي صحيح');
       return;
     }
-    
+
 
     if (
       isNaN(previousHours) ||
       previousHours <= 0 ||
       !Number.isInteger(previousHours)
     ) {
-      alert('يرجى إدخال عدد ساعات صحيح (عدد صحيح بدون كسور).');
+      alert('يرجى إدخال عدد ساعات صحيح ');
       return;
     }
-    
+
   }
 
   let totalPoints = previousGPA * previousHours;
@@ -197,7 +195,7 @@ function calculateGPA() {
       }
 
       if (hours > previousHours) {
-        alert('ساعات المادة المعادة يجب أن تكون أقل من أو تساوي الساعات التراكمية القديمة.');
+        alert('يرجى التأكد من ساعات المادة المعادة');
         return;
       }
 
@@ -240,7 +238,7 @@ function calculateGPA() {
       finalStatus = studentStatus;
     }
   }
-  
+
   // إذا كان الفصل الأول يتم احتساب فقط بناءً على المعدل
   else if (isFirstSemesterSelect.value === 'yes') {
     if (newGPA < 2.00) {
@@ -276,35 +274,35 @@ function calculateGPA() {
 
 
   function handleFirstSemesterStatus(newGPA) {
-  let finalStatus;
+    let finalStatus;
 
-  // إذا المعدل التراكمي الجديد أقل من 2.00
-  if (newGPA < 2.00) {
-    finalStatus = 'إنذار أول';
-  } else {
-    finalStatus = 'دراسة منتظمة';
+    // إذا المعدل التراكمي الجديد أقل من 2.00
+    if (newGPA < 2.00) {
+      finalStatus = 'إنذار أول';
+    } else {
+      finalStatus = 'دراسة منتظمة';
+    }
+
+    return {
+      previousGPA: 0,
+      previousHours: 0,
+      finalStatus: finalStatus
+    };
   }
 
-  return {
-    previousGPA: 0,
-    previousHours: 0,
-    finalStatus: finalStatus
-  };
-}
 
 
 
-  
 
 
 
-// عرض النتائج
-displayResult(newGPA, totalHours, newCourses, previousGPA, previousHours, semesterGPA, semesterHours, finalStatus);
+  // عرض النتائج
+  displayResult(newGPA, totalHours, newCourses, previousGPA, previousHours, semesterGPA, semesterHours, finalStatus);
 
-// تأخير بسيط حتى يظهر القسم ثم نمرر للأسفل بسلاسة
-setTimeout(() => {
-  document.getElementById('resultSection').scrollIntoView({ behavior: 'smooth', block: 'start' });
-}, 300);
+  // تأخير بسيط حتى يظهر القسم ثم نمرر للأسفل بسلاسة
+  setTimeout(() => {
+    document.getElementById('resultSection').scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }, 300);
   resetButton.classList.remove('hidden');
 }
 
