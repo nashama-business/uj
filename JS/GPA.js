@@ -48,7 +48,7 @@ function updateCoursesUI() {
         <span class="course-name">المادة ${i}</span>
         <input type="text" class="course-name-input hidden" placeholder="أدخل اسم المادة">
       </h3>
-      <label><i class="fas fa-tag"></i> رمز المادة:</label>
+      <label><i class="fas fa-tag"></i> رمز المادة</label>
       <select class="course-code">
         <option value="أ">أ</option>
         <option value="أ-">أ-</option>
@@ -64,7 +64,7 @@ function updateCoursesUI() {
         <option value="هـ">هـ</option>
       </select>
 
-      <label><i class="fas fa-clock"></i> عدد الساعات:</label>
+      <label><i class="fas fa-clock"></i> عدد الساعات</label>
       <select class="course-hours">
         <option value="1">1</option>
         <option value="2">2</option>
@@ -177,20 +177,20 @@ function calculateGPA() {
     const courseName = course.name.textContent;
 
     if (isNaN(hours) || hours <= 0) {
-      alert('يرجى إدخال عدد ساعات صحيح لكل مادة.');
+      alert('يرجى إدخال عدد ساعات صحيح لكل مادة');
       return;
     }
 
     const gradeValue = gradePoints[grade];
     if (gradeValue === undefined) {
-      alert('يرجى إدخال رمز مادة صحيح.');
+      alert('يرجى إدخال رمز مادة صحيح');
       return;
     }
 
     if (repeated) {
       const oldGradeValue = gradePoints[oldCode];
       if (oldGradeValue === undefined) {
-        alert('يرجى إدخال رمز مادة قديمة صحيح.');
+        alert('يرجى إدخال رمز مادة قديمة صحيح');
         return;
       }
 
@@ -320,8 +320,8 @@ function displayResult(newGPA, totalHours, newCourses, previousGPA, previousHour
   <h2>نتائج الحساب</h2>
   <p><strong>المعدل التراكمي الجديد:</strong> <span class="gpa-value">${newGPA.toFixed(2)}</span></p>
   <p><strong>التقدير:</strong> <span class="category">${gpaCategory}</span></p>
-  <p><strong>الساعات التراكمية:</strong> ${totalHours}</p>
-  <p><strong>وضع الطالب:</strong> <span class="category">${finalStatus}</span></p>
+  <p><strong>الساعات التراكمية</strong> ${totalHours}</p>
+  <p><strong>وضع الطالب</strong> <span class="category">${finalStatus}</span></p>
   <table>
     <thead>
       <tr>
@@ -492,20 +492,42 @@ resetButton.addEventListener('click', resetForm);
 
 updateCoursesUI();
 
+// جلب العناصر
 const navEl = document.querySelector('.nav');
-const hamburgerEl = document.querySelector('.hamburger');
-const navItemEls = document.querySelectorAll('.nav__item');
+const hamburgerLabel = document.querySelector('.hamburger');
+const toggleInput = document.querySelector('.hamburger input');
+const navLinks = document.querySelectorAll('.nav__link');
 
-hamburgerEl.addEventListener('click', () => {
-  navEl.classList.toggle('nav--open');
-  hamburgerEl.classList.toggle('hamburger--open');
+// دالة لتبديل حالة القائمة
+function updateNav(isOpen) {
+  navEl.classList.toggle('nav--open', isOpen);
+  hamburgerLabel.setAttribute('aria-expanded', isOpen);
+  document.body.style.overflow = isOpen ? 'hidden' : '';
+}
+
+// عند تغيير حالة الـ checkbox
+toggleInput.addEventListener('change', () => {
+  updateNav(toggleInput.checked);
 });
 
-navItemEls.forEach(navItemEl => {
-  navItemEl.addEventListener('click', () => {
-    navEl.classList.remove('nav--open');
-    hamburgerEl.classList.remove('hamburger--open');
+// إغلاق القائمة عند النقر على أي رابط
+navLinks.forEach(link => {
+  link.addEventListener('click', () => {
+    toggleInput.checked = false;
+    updateNav(false);
   });
 });
+
+// إغلاق القائمة عند النقر خارجها
+document.addEventListener('click', e => {
+  const isInside = navEl.contains(e.target) || hamburgerLabel.contains(e.target);
+  if (!isInside && toggleInput.checked) {
+    toggleInput.checked = false;
+    updateNav(false);
+  }
+});
+
+// تهيئة ARIA عند التحميل
+updateNav(false);
 
 
