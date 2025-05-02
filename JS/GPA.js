@@ -145,7 +145,7 @@ function calculateGPA() {
     previousHours = 0;
   } else {
 
-    if (isNaN(previousGPA) || previousGPA < 0.5 || previousGPA > 2.0 || !/^\d+(\.\d{1,2})?$/.test(previousGPA)) {
+    if (isNaN(previousGPA) || previousGPA < 0.5 || previousGPA > 4.0 || !/^\d+(\.\d{1,2})?$/.test(previousGPA)) {
       alert('يرجى إدخال معدل تراكمي صحيح');
       return;
     }
