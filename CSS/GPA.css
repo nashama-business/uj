@@ -215,7 +215,7 @@ table tr:hover {
     top: 0;
     left: 0;
     width: 100%;
-    background-color: #fff;
+    background: rgba(0, 0, 0, 0.2);
     border: none;
     box-shadow: none;
     margin: 0;
@@ -227,11 +227,10 @@ table tr:hover {
 12. BOTTOM BAR
 ------------------------------------- */
 .bottom-bar {
-    background-color: rgba(176, 134, 153, 0.3);
+    
     backdrop-filter: blur(10px);
     bottom: 0;
     left: 0;
-    border-top: 1px solid rgba(255, 255, 255, 0.2);
 }
 
 .bottom-bar__content {
@@ -275,13 +274,13 @@ table tr:hover {
 
 .nav__link {
     text-decoration: none;
-    color: rgba(255, 255, 255, 0.75);
     transition: all 0.2s;
 }
 
 .nav__link:hover,
 .nav__link:focus {
-    color: rgba(255, 255, 255, 1);
+    background: rgba(252, 0, 0, 0.9);
+
 }
 
 .nav--open {
@@ -299,7 +298,8 @@ table tr:hover {
 .bar {
     height: 2px;
     width: 27px;
-    background-color: #fff;
+
+
     margin: 5px 0;
     opacity: 0.8;
     transition: all 0.3s ease-in-out;
@@ -330,12 +330,12 @@ table tr:hover {
         max-width: 400px;
         padding: 15px 20px;
         text-align: center;
-        background: rgba(255, 255, 255, 0.75);
+        background: rgba(0, 0, 0, 0.2);
         backdrop-filter: blur(30px);
         -webkit-backdrop-filter: blur(30px);
         border-radius: 15px;
-        border: 1px solid rgba(255, 255, 255, 0.99);
-        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+        border: 1px solid rgba(245, 12, 12, 0.99);
+        box-shadow: 0 8px 16px rgba(255, 0, 0, 0.404);
         transition: left 0.4s ease-in-out, opacity 0.3s ease-in-out;
     }
 
@@ -415,7 +415,7 @@ table tr:hover {
 
 /* CSS */
 .footer {
-    background-color: #f8f8f8;
+    background: rgba(0, 0, 0, 0.2);
     text-align: center;
     padding: 1rem 0;
     box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1);
@@ -428,7 +428,7 @@ table tr:hover {
 }
 
 .footer__content a {
-    color: #004080;
+    color: #007B3A;
     text-decoration: none;
     font-weight: bold;
 }

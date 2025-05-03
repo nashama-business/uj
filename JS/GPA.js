@@ -145,7 +145,7 @@ function calculateGPA() {
     previousHours = 0;
   } else {
 
-    if (isNaN(previousGPA) || previousGPA < 0.5 || previousGPA > 4.0 || !/^\d+(\.\d{1,2})?$/.test(previousGPA)) {
+    if (isNaN(previousGPA) || previousGPA < 0.5 || previousGPA > 4 || !/^\d+(\.\d{1,2})?$/.test(previousGPA)) {
       alert('يرجى إدخال معدل تراكمي صحيح');
       return;
     }
@@ -271,7 +271,6 @@ function calculateGPA() {
       finalStatus = 'فصل نهائي من الجامعة';
     }
   }
-
 
   function handleFirstSemesterStatus(newGPA) {
     let finalStatus;
@@ -422,7 +421,7 @@ function displayResult(newGPA, totalHours, newCourses, previousGPA, previousHour
 
 
 function getGPACategory(gpa) {
-  if (gpa >= 3.65 && gpa <= 4.00) return 'ممتاز';
+  if (gpa >= 3.65 && gpa <= 4) return 'ممتاز';
   if (gpa >= 3.00 && gpa <= 3.64) return 'جيد جداً';
   if (gpa >= 2.50 && gpa <= 2.99) return 'جيد';
   if (gpa >= 2.00 && gpa <= 2.49) return 'مقبول';
