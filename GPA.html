@@ -42,13 +42,15 @@
           <label class="hamburger">
             <input type="checkbox">
             <svg viewBox="0 0 32 32">
-              <path class="line line-top-bottom" d="M27 10 13 10C10.8 10 9 8.2 9 6 9 3.5 10.8 2 13 2 15.2 2 17 3.8 17 6L17 26C17 28.2 18.8 30 21 30 23.2 30 25 28.2 25 26 25 23.8 23.2 22 21 22L7 22"></path>
+              <path class="line line-top-bottom"
+                d="M27 10 13 10C10.8 10 9 8.2 9 6 9 3.5 10.8 2 13 2 15.2 2 17 3.8 17 6L17 26C17 28.2 18.8 30 21 30 23.2 30 25 28.2 25 26 25 23.8 23.2 22 21 22L7 22">
+              </path>
               <path class="line" d="M7 16 27 16"></path>
             </svg>
           </label>
           <!-- باقي الـ header -->
         </header>
-        
+
         </section>
       </div>
     </div>
@@ -64,7 +66,7 @@
 
     <!-- يظهر فقط إذا كانت الإجابة لا -->
     <div id="studentStatusSection" class="hidden">
-      <label for="studentStatus">وضع الطالب</label>
+      <label for="studentStatus"><i class="fas fa-user-check"></i> وضع الطالب</label>
       <select id="studentStatus">
         <option value="دراسة منتظمة" selected>دراسة منتظمة</option>
         <option value="إنذار أول">إنذار أول</option>
@@ -75,13 +77,13 @@
       </select>
 
 
-      <label for="semesterType">نوع الفصل</label>
+      <label for="semesterType"><i class="fas fa-calendar-week"></i> نوع الفصل</label>
       <select id="semesterType">
         <option value="نظامي" selected>نظامي</option>
         <option value="صيفي">صيفي</option>
       </select>
 
-      <label for="isFirstMajor">هل هذا تخصصك الأول في الجامعة الاردنية؟
+      <label for="isFirstMajor"><i class="fas fa-user-graduate"></i> هل هذا تخصصك الأول في الجامعة الاردنية ؟
       </label>
       <select id="isFirstMajor">
         <option value="yes" selected>نعم</option>
@@ -127,19 +129,78 @@
     <!-- قسم عرض النتائج -->
     <section id="resultSection" class="hidden result"></section>
   </div>
+
   
+  <script>
+    const trailLength = 10;
+    const trail = [];
   
+    function createJordanStarSVG() {
+      const svgNS = "http://www.w3.org/2000/svg";
+      const svg = document.createElementNS(svgNS, "svg");
+      svg.setAttribute("viewBox", "0 0 100 100");
+      svg.setAttribute("class", "star-trail");
   
+      const path = document.createElementNS(svgNS, "path");
+  
+      // رسم نجمة سباعية متماثلة بزوايا دقيقة
+      const cx = 50;
+      const cy = 50;
+      const r = 40;
+      const points = [];
+      const step = 2; // لرسم النمط 7/2 (نجمة أردنية)
+  
+      for (let i = 0; i < 7; i++) {
+        const angle = ((2 * Math.PI) / 7) * ((i * step) % 7) - Math.PI / 2;
+        const x = cx + r * Math.cos(angle);
+        const y = cy + r * Math.sin(angle);
+        points.push(`${x},${y}`);
+      }
+  
+      let d = `M${points[0]}`;
+      for (let i = 1; i < points.length; i++) {
+        d += ` L${points[i]}`;
+      }
+      d += " Z";
+  
+      path.setAttribute("d", d);
+      path.setAttribute("fill", "white");
+      path.setAttribute("stroke", "#D02024");
+      path.setAttribute("stroke-width", "1");
+  
+      svg.appendChild(path);
+      return svg;
+    }
+  
+    for (let i = 0; i < trailLength; i++) {
+      const star = createJordanStarSVG();
+      document.body.appendChild(star);
+      trail.push(star);
+    }
+  
+    document.addEventListener("mousemove", (e) => {
+      const { clientX: x, clientY: y } = e;
+      trail.forEach((star, index) => {
+        setTimeout(() => {
+          star.style.left = `${x}px`;
+          star.style.top = `${y}px`;
+        }, index * 30);
+      });
+    });
+  </script>
+  
+
+
   <footer class="footer">
     <div class="footer__content">
       <p>جميع الحقوق محفوظة &copy; 2025</p>
       <p>تصميم وتطوير: <a href="https://www.instagram.com/abdulhadi.jebreen/" target="_blank"> عبد الهادي</a></p>
     </div>
-  
-  <script src="JS/GPA.js"></script>
-  <!-- ملف JavaScript -->
 
-  
+    <script src="JS/GPA.js"></script>
+    <!-- ملف JavaScript -->
+
+
 </body>
 
 </html>

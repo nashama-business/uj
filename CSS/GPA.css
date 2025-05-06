@@ -7,7 +7,7 @@
     box-sizing: border-box;
     text-decoration: none;
     list-style: none;
-    
+
 }
 
 /* -------------------------------------
@@ -29,7 +29,7 @@ body {
     height: 100%;
     margin-left: auto;
     margin-right: auto;
-    
+
 }
 
 .wrapper {
@@ -48,7 +48,7 @@ body {
     text-align: center;
     margin-top: 80px;
     margin-bottom: 80px;
-    margin-left: auto;  
+    margin-left: auto;
     margin-right: auto;
 
 }
@@ -180,6 +180,7 @@ table tr:hover {
     background: #EAEAEA;
 }
 
+
 /* -------------------------------------
 9. KEYFRAMES
 ------------------------------------- */
@@ -227,7 +228,7 @@ table tr:hover {
 12. BOTTOM BAR
 ------------------------------------- */
 .bottom-bar {
-    
+
     backdrop-filter: blur(10px);
     bottom: 0;
     left: 0;
@@ -277,12 +278,6 @@ table tr:hover {
     transition: all 0.2s;
 }
 
-.nav__link:hover,
-.nav__link:focus {
-    background: rgba(252, 0, 0, 0.9);
-
-}
-
 .nav--open {
     left: 50% !important;
 }
@@ -330,13 +325,14 @@ table tr:hover {
         max-width: 400px;
         padding: 15px 20px;
         text-align: center;
-        background: rgba(0, 0, 0, 0.2);
+        background: rgba(179, 179, 179, 0.8);
         backdrop-filter: blur(30px);
         -webkit-backdrop-filter: blur(30px);
         border-radius: 15px;
         border: 1px solid rgba(245, 12, 12, 0.99);
         box-shadow: 0 8px 16px rgba(255, 0, 0, 0.404);
         transition: left 0.4s ease-in-out, opacity 0.3s ease-in-out;
+
     }
 
     .nav__list {
@@ -432,3 +428,33 @@ table tr:hover {
     text-decoration: none;
     font-weight: bold;
 }
+
+
+
+.star-trail {
+    position: fixed;
+    width: 20px;
+    height: 20px;
+    pointer-events: none;
+    transform: translate(-50%, -50%);
+    z-index: 9999;
+    opacity: 0.9;
+    filter: drop-shadow(0 0 3px rgba(208, 32, 36, 0.6));
+}
+
+
+@keyframes sparkleFade {
+    0% {
+        transform: translate(-50%, -50%) scale(1);
+        opacity: 0.9;
+    }
+
+    100% {
+        transform: translate(-50%, -50%) scale(0.4) rotate(20deg);
+        opacity: 0;
+    }
+}
+
+
+
+
