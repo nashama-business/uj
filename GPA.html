@@ -55,7 +55,7 @@
       </div>
     </div>
   </header>
-  <br>
+  
   <div class="container">
     <!-- قسم اختيار الفصل الأول -->
     <label for="isFirstSemester"><i class="fas fa-calendar-alt"></i> هل هذا فصلك الأول؟</label>
@@ -120,7 +120,7 @@
     <section>
       <button id="calculateButton">احسب المعدل</button>
     </section>
-    <br>
+    
 
     <section>
       <button id="resetButton" class="hidden">حساب معدل جديد</button>
@@ -129,65 +129,10 @@
     <!-- قسم عرض النتائج -->
     <section id="resultSection" class="hidden result"></section>
   </div>
-
   
-  <script>
-    const trailLength = 10;
-    const trail = [];
   
-    function createJordanStarSVG() {
-      const svgNS = "http://www.w3.org/2000/svg";
-      const svg = document.createElementNS(svgNS, "svg");
-      svg.setAttribute("viewBox", "0 0 100 100");
-      svg.setAttribute("class", "star-trail");
   
-      const path = document.createElementNS(svgNS, "path");
   
-      // رسم نجمة سباعية متماثلة بزوايا دقيقة
-      const cx = 50;
-      const cy = 50;
-      const r = 40;
-      const points = [];
-      const step = 2; // لرسم النمط 7/2 (نجمة أردنية)
-  
-      for (let i = 0; i < 7; i++) {
-        const angle = ((2 * Math.PI) / 7) * ((i * step) % 7) - Math.PI / 2;
-        const x = cx + r * Math.cos(angle);
-        const y = cy + r * Math.sin(angle);
-        points.push(`${x},${y}`);
-      }
-  
-      let d = `M${points[0]}`;
-      for (let i = 1; i < points.length; i++) {
-        d += ` L${points[i]}`;
-      }
-      d += " Z";
-  
-      path.setAttribute("d", d);
-      path.setAttribute("fill", "white");
-      path.setAttribute("stroke", "#D02024");
-      path.setAttribute("stroke-width", "1");
-  
-      svg.appendChild(path);
-      return svg;
-    }
-  
-    for (let i = 0; i < trailLength; i++) {
-      const star = createJordanStarSVG();
-      document.body.appendChild(star);
-      trail.push(star);
-    }
-  
-    document.addEventListener("mousemove", (e) => {
-      const { clientX: x, clientY: y } = e;
-      trail.forEach((star, index) => {
-        setTimeout(() => {
-          star.style.left = `${x}px`;
-          star.style.top = `${y}px`;
-        }, index * 30);
-      });
-    });
-  </script>
   
 
 
