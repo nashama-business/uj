@@ -573,7 +573,8 @@ updateNav(false);
   }
 
   // شغّل فقط إذا الشاشة أكبر من 768 بكسل (أي ليست هاتفًا أو جهازًا لوحيًا)
-  if (window.innerWidth > 768) {
+  if (!/Mobi|Android|iPhone|iPad|iPod/i.test(navigator.userAgent) && window.innerWidth > 768) {
+
     for (let i = 0; i < trailLength; i++) {
       const star = createJordanStarSVG();
       document.body.appendChild(star);
