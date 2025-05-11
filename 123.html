@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+  <meta charset="UTF-8">
+  <title>بنك أسئلة - الإدارة العامة الحديثة</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: #f0f2f5;
+      margin: 0;
+      padding: 0;
+      direction: rtl;
+    }
+    .container {
+      max-width: 1000px;
+      margin: 20px auto;
+      background: #fff;
+      padding: 25px;
+      border-radius: 8px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    }
+    h1, h2 {
+      text-align: center;
+      color: #333;
+    }
+    .question {
+      background: #f9f9f9;
+      padding: 15px;
+      margin-bottom: 20px;
+      border-radius: 6px;
+      border-right: 4px solid #007bff;
+    }
+    .question p {
+      font-weight: bold;
+    }
+    .options label {
+      display: block;
+      margin: 8px 0;
+      cursor: pointer;
+    }
+    .answer, .example {
+      display: none;
+      margin-top: 10px;
+    }
+    .answer {
+      color: green;
+      font-weight: bold;
+    }
+    .example {
+      font-size: 0.95em;
+      color: #444;
+      background: #eef1f4;
+      padding: 10px;
+      border-radius: 4px;
+    }
+    .show-btn {
+      margin-top: 10px;
+      padding: 8px 15px;
+      background: #007bff;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+    .show-btn:hover {
+      background: #0056b3;
+    }
+  </style>
+</head>
+<body>
+
+<div class="container">
+  <h1>بنك أسئلة الإدارة العامة الحديثة</h1>
+  <h2>الفصل الأول: المفاهيم الأساسية</h2>
+
+  <!-- السؤال 1 -->
+  <div class="question">
+    <p>1. ما هو الهدف الرئيسي من الإدارة العامة؟</p>
+    <div class="options">
+      <label><input type="radio" name="q1"> تحقيق الأرباح وزيادة رأس المال</label>
+      <label><input type="radio" name="q1"> تقديم الخدمات العامة وتعزيز الصالح العام</label>
+      <label><input type="radio" name="q1"> زيادة المنافسة في السوق</label>
+      <label><input type="radio" name="q1"> تقليل دور الحكومة في الاقتصاد</label>
+    </div>
+    <button class="show-btn" onclick="showAnswer('a1', 'e1')">إظهار الإجابة</button>
+    <div id="a1" class="answer">الإجابة الصحيحة: تقديم الخدمات العامة وتعزيز الصالح العام</div>
+    <div id="e1" class="example">
+      <strong>أمثلة من الأردن:</strong><br>
+      - عام: وزارة التنمية الاجتماعية.<br>
+      - خاص: شركة كهرباء الأردن.<br>
+      - غير ربحي: جمعية حماية الأسرة.
+    </div>
+  </div>
+
+  <!-- السؤال 2 -->
+  <div class="question">
+    <p>2. من هو العالم الذي ارتبط اسمه بنظرية الإدارة العلمية؟</p>
+    <div class="options">
+      <label><input type="radio" name="q2"> ماكس فيبر</label>
+      <label><input type="radio" name="q2"> فريدريك تايلور</label>
+      <label><input type="radio" name="q2"> هربرت سايمون</label>
+      <label><input type="radio" name="q2"> بيتر دراكر</label>
+    </div>
+    <button class="show-btn" onclick="showAnswer('a2', 'e2')">إظهار الإجابة</button>
+    <div id="a2" class="answer">الإجابة الصحيحة: فريدريك تايلور</div>
+    <div id="e2" class="example">
+      <strong>أمثلة من الأردن:</strong><br>
+      - عام: مؤسسة المواصفات والمقاييس الأردنية.<br>
+      - خاص: شركة فاين لصناعة الورق الصحي.<br>
+      - غير ربحي: مركز تدريب مهني غير ربحي.
+    </div>
+  </div>
+
+  <!-- تابع باقي الأسئلة -->
+  <div class="question">
+    <p>3. ما الفرق بين الكفاءة والفعالية؟</p>
+    <div class="options">
+      <label><input type="radio" name="q3"> الكفاءة تقيس استخدام الموارد، الفعالية تقيس تحقيق الأهداف</label>
+      <label><input type="radio" name="q3"> لا يوجد فرق بينهما</label>
+      <label><input type="radio" name="q3"> الكفاءة تقيس رضا العملاء فقط</label>
+      <label><input type="radio" name="q3"> الفعالية تهتم بالتكاليف فقط</label>
+    </div>
+    <button class="show-btn" onclick="showAnswer('a3', 'e3')">إظهار الإجابة</button>
+    <div id="a3" class="answer">الإجابة الصحيحة: الكفاءة تقيس استخدام الموارد، الفعالية تقيس تحقيق الأهداف</div>
+    <div id="e3" class="example">
+      <strong>أمثلة من الأردن:</strong><br>
+      - عام: وزارة الصحة تقيس التكلفة وجودة الخدمة.<br>
+      - خاص: مستشفيات الأردن الخاصة تقيس الإنتاجية.<br>
+      - غير ربحي: منظمة أطباء بلا حدود.
+    </div>
+  </div>
+
+  <div class="question">
+    <p>4. ما هو دور القطاع غير الربحي في الإدارة؟</p>
+    <div class="options">
+      <label><input type="radio" name="q4"> تقديم رسائل إنسانية واجتماعية دون السعي للربح</label>
+      <label><input type="radio" name="q4"> تحقيق أرباح للمساهمين</label>
+      <label><input type="radio" name="q4"> دعم الأسواق المحلية مالياً</label>
+      <label><input type="radio" name="q4"> تقليل خدمات الحكومة</label>
+    </div>
+    <button class="show-btn" onclick="showAnswer('a4', 'e4')">إظهار الإجابة</button>
+    <div id="a4" class="answer">الإجابة الصحيحة: تقديم رسائل إنسانية واجتماعية دون السعي للربح</div>
+    <div id="e4" class="example">
+      <strong>أمثلة من الأردن:</strong><br>
+      - غير ربحي: الهيئة الخيرية الهاشمية.
+    </div>
+  </div>
+
+  <!-- يمكنك إضافة مزيد من الأسئلة بنفس البنية -->
+
+</div>
+
+<script>
+function showAnswer(answerId, exampleId) {
+  document.getElementById(answerId).style.display = 'block';
+  document.getElementById(exampleId).style.display = 'block';
+}
+</script>
+
+</body>
+</html>

@@ -1,5 +1,5 @@
 /* -------------------------------------
-1. إعادة تعيين الأنماط الافتراضية | RESET
+1. RESET
 ------------------------------------- */
 * {
     margin: 0;
@@ -8,61 +8,18 @@
     text-decoration: none;
     list-style: none;
     cursor: none !important;
-    caret-color: transparent;
-}
 
-/* تنسيق رسائل الخطأ */
-.error-message {
-    position: fixed;
-    top: 20px;
-    right: 20px;
-    background: rgba(220, 53, 69, 0.95);
-    color: white;
-    padding: 15px 25px;
-    border-radius: 8px;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-    font-size: 14px;
-    font-weight: 500;
-    z-index: 9999;
-    animation: slideIn 0.3s ease-out, fadeOut 0.3s ease-out 2.7s forwards;
-    display: flex;
-    align-items: center;
-    gap: 10px;
-}
-
-.error-message i {
-    font-size: 18px;
-}
-
-@keyframes slideIn {
-    from {
-        transform: translateX(100%);
-        opacity: 0;
-    }
-    to {
-        transform: translateX(0);
-        opacity: 1;
-    }
-}
-
-@keyframes fadeOut {
-    from {
-        opacity: 1;
-    }
-    to {
-        opacity: 0;
-    }
 }
 
 /* -------------------------------------
-2. الأدوات المساعدة | UTILITIES
+2. UTILITIES
 ------------------------------------- */
 .hidden {
     display: none;
 }
 
 /* -------------------------------------
-3. الأنماط الأساسية | BASE
+3. BASE
 ------------------------------------- */
 body {
     font-family: 'Poppins', sans-serif;
@@ -98,7 +55,7 @@ body {
 }
 
 /* -------------------------------------
-4. تنسيق النصوص | TYPOGRAPHY
+4. TYPOGRAPHY
 ------------------------------------- */
 h1 {
     font-size: 2rem;
@@ -113,7 +70,7 @@ p {
 }
 
 /* -------------------------------------
-5. عناصر النموذج | FORM ELEMENTS
+5. FORM ELEMENTS
 ------------------------------------- */
 label {
     display: block;
@@ -131,43 +88,8 @@ label i {
     color: #007B3A;
 }
 
-.button-group {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 8px;
-    margin-top: 8px;
-    margin-bottom: 15px;
-}
-
-.option-button {
-    padding: 8px 12px;
-    border: 2px solid #bdc3c7;
-    border-radius: 6px;
-    background: #FFFFFF;
-    color: #1E191A;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    flex: 1;
-    min-width: 60px;
-    text-align: center;
-    font-size: 14px;
-    font-weight: 500;
-}
-
-.option-button:hover {
-    background: #f0f0f0;
-    border-color: #007B3A;
-    transform: translateY(-1px);
-}
-
-.option-button.selected {
-    background: #007B3A;
-    color: #FFFFFF;
-    border-color: #007B3A;
-    box-shadow: 0 2px 4px rgba(0, 123, 58, 0.2);
-}
-
-input {
+input,
+select {
     width: 100%;
     padding: 12px 35px;
     margin-top: 8px;
@@ -179,57 +101,17 @@ input {
     color: #1E191A;
 }
 
-input:focus {
+input:focus,
+select:focus {
     border-color: #007B3A;
     outline: none;
 }
 
-/* تنسيق رسائل الخطأ داخل الحقول */
-.input-error {
-    border-color: #dc3545 !important;
-    box-shadow: 0 0 0 0.2rem rgba(220, 53, 69, 0.25) !important;
-    animation: shake 0.5s ease-in-out;
-}
-
-.error-message-inline {
-    color: #dc3545;
-    font-size: 12px;
-    margin-top: 5px;
-    display: flex;
-    align-items: center;
-    gap: 5px;
-    animation: fadeIn 0.3s ease-in-out;
-    background: rgba(220, 53, 69, 0.1);
-    padding: 8px 12px;
-    border-radius: 4px;
-    border-right: 3px solid #dc3545;
-}
-
-.error-message-inline i {
-    font-size: 14px;
-}
-
-@keyframes shake {
-    0%, 100% { transform: translateX(0); }
-    25% { transform: translateX(-5px); }
-    75% { transform: translateX(5px); }
-}
-
-@keyframes fadeIn {
-    from { 
-        opacity: 0;
-        transform: translateY(-10px);
-    }
-    to { 
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
 /* -------------------------------------
-6. الأزرار | BUTTONS
+6. BUTTONS
 ------------------------------------- */
-button {
+button,
+.btn {
     width: 100%;
     margin-top: 20px;
     padding: 12px 20px;
@@ -242,183 +124,36 @@ button {
     transition: background 0.3s ease, transform 0.3s ease;
 }
 
-button:hover {
+button:hover,
+.btn:hover {
     background: #CF0921;
     transform: scale(1.05);
 }
 
 /* -------------------------------------
-7. نتيجة المعدل التراكمي | GPA RESULT
+7. GPA RESULT
 ------------------------------------- */
 .result {
-    margin-top: 30px;
+    margin-top: 20px;
     margin-bottom: 100px;
-    border-radius: 15px;
+    border-radius: 8px;
     text-align: right;
     animation: fadeIn 0.5s ease-in-out;
-    background: #f8f9fa;
-    padding: 25px;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-}
-
-.result h2 {
-    color: #007B3A;
-    font-size: 24px;
-    margin-bottom: 25px;
-    text-align: center;
-    position: relative;
-    padding-bottom: 15px;
-}
-
-.result h2::after {
-    content: '';
-    position: absolute;
-    bottom: 0;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 100px;
-    height: 3px;
-    background: #007B3A;
-    border-radius: 2px;
-}
-
-.result p {
-    margin: 15px 0;
-    font-size: 16px;
-    line-height: 1.6;
-}
-
-.result strong {
-    color: #1E191A;
-    font-weight: 600;
 }
 
 .gpa-value {
-    font-size: 28px;
-    font-weight: 700;
+    font-size: 24px;
+    font-weight: 600;
     color: #EE161F;
-    display: inline-block;
-    margin-right: 10px;
-    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
 }
 
 .category {
-    font-size: 20px;
+    font-size: 18px;
     color: #EE161F;
-    font-weight: 600;
-    display: inline-block;
-    margin-right: 10px;
-}
-
-/* تحسين شكل الجداول في قسم النتائج | Improve table appearance in results section */
-.result table {
-    width: 100%;
-    border-collapse: separate;
-    border-spacing: 0;
-    margin: 20px 0;
-    border-radius: 10px;
-    overflow: hidden;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-}
-
-.result table th {
-    background: #007B3A;
-    color: #FFFFFF;
-    padding: 15px;
-    font-weight: 600;
-    text-align: center;
-    border: none;
-}
-
-.result table td {
-    padding: 12px 15px;
-    text-align: center;
-    border: 1px solid #e0e0e0;
-    background: #FFFFFF;
-}
-
-.result table tr:nth-child(even) td {
-    background: #f8f9fa;
-}
-
-.result table tr:hover td {
-    background: #f0f0f0;
-}
-
-/* تحسين التجاوب مع الشاشات الصغيرة | Improve responsiveness for small screens */
-@media (max-width: 768px) {
-    .result {
-        padding: 15px;
-        margin-top: 20px;
-        margin-bottom: 60px;
-    }
-
-    .result h2 {
-        font-size: 20px;
-        margin-bottom: 20px;
-    }
-
-    .gpa-value {
-        font-size: 24px;
-    }
-
-    .category {
-        font-size: 18px;
-    }
-
-    .result table th,
-    .result table td {
-        padding: 8px 10px;
-        font-size: 14px;
-    }
-}
-
-/* تحسين تأثيرات الحركة | Improve animation effects */
-@keyframes fadeIn {
-    from {
-        opacity: 0;
-        transform: translateY(-20px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-/* إضافة تأثيرات حركية للجداول | Add animation effects to tables */
-.result table {
-    animation: slideIn 0.5s ease-out;
-}
-
-@keyframes slideIn {
-    from {
-        opacity: 0;
-        transform: translateX(-20px);
-    }
-    to {
-        opacity: 1;
-        transform: translateX(0);
-    }
-}
-
-/* تحسين مظهر الأرقام في الجداول | Improve number appearance in tables */
-.result table td:last-child {
-    font-weight: 600;
-    color: #007B3A;
-}
-
-/* إضافة تأثيرات حركية عند التحويم على الصفوف | Add hover animation effects to rows */
-.result table tr {
-    transition: all 0.3s ease;
-}
-
-.result table tr:hover {
-    transform: scale(1.01);
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 }
 
 /* -------------------------------------
-8. الجداول | TABLES
+8. TABLE
 ------------------------------------- */
 table {
     width: 100%;
@@ -448,7 +183,7 @@ table tr:hover {
 
 
 /* -------------------------------------
-9. تأثيرات الحركة | KEYFRAMES
+9. KEYFRAMES
 ------------------------------------- */
 @keyframes fadeIn {
     from {
@@ -463,7 +198,7 @@ table tr:hover {
 }
 
 /* -------------------------------------
-10. شعار النشامة | NASHAMA LOGO
+10. NASHAMA LOGO
 ------------------------------------- */
 .nashama img {
     position: absolute;
@@ -475,74 +210,63 @@ table tr:hover {
 }
 
 /* -------------------------------------
-11. الهيدر الرئيسي | HEADER
+11. HEADER
 ------------------------------------- */
 .header {
-    /* تثبيت الهيدر في أعلى الصفحة | Fix header at top of page */
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
-    /* خلفية شفافة مع تأثير زجاجي | Transparent background with glass effect */
     background: rgba(0, 0, 0, 0.2);
     border: none;
     box-shadow: none;
     margin: 0;
     padding: 0;
-    /* ضمان ظهور الهيدر فوق جميع العناصر | Ensure header appears above all elements */
     z-index: 1000;
 }
 
 /* -------------------------------------
-12. الشريط السفلي للهيدر | BOTTOM BAR
+12. BOTTOM BAR
 ------------------------------------- */
 .bottom-bar {
-    /* إضافة تأثير زجاجي للخلفية | Add glass effect to background */
+
     backdrop-filter: blur(10px);
     bottom: 0;
     left: 0;
 }
 
-/* تنسيق محتوى الشريط السفلي | Style bottom bar content */
 .bottom-bar__content {
-    /* تحديد الارتفاع الأدنى والحد الأقصى للعرض | Define minimum and maximum width for content */
     min-height: 60px;
     max-width: 1200px;
     padding: 0 30px;
     margin: 0 auto;
-    /* تنسيق العناصر داخله | Style content inside bar */
     display: flex;
     justify-content: space-between;
     align-items: center;
-    /* عكس اتجاه العناصر للغة العربية | Reverse direction for Arabic language */
     flex-direction: row-reverse;
 }
 
 /* -------------------------------------
-13. الشعار | LOGO
+13. LOGO
 ------------------------------------- */
 .logo {
-    /* تنسيق الشعار وموقعه | Style logo and its position */
     display: flex;
     column-gap: 10px;
     align-items: center;
     vertical-align: middle;
 }
 
-/* حجم صورة الشعار | Logo image size */
 .logo__img {
     height: 50px;
 }
 
 /* -------------------------------------
-14. القائمة الرئيسية | NAVIGATION
+14. NAVIGATION
 ------------------------------------- */
 .nav {
-    /* إضافة تأثير انتقالي للقائمة | Add transition effect to menu */
     transition: all 0.3s ease-in-out;
 }
 
-/* تنسيق قائمة الروابط | Style navigation links */
 .nav__list {
     display: flex;
     flex-direction: row-reverse;
@@ -550,35 +274,33 @@ table tr:hover {
     column-gap: 40px;
 }
 
-/* تنسيق روابط القائمة | Style menu links */
 .nav__link {
     text-decoration: none;
     transition: all 0.2s;
 }
 
-/* حالة القائمة عند فتحها في الشاشات الصغيرة | Menu state when opened on small screens */
 .nav--open {
     left: 50% !important;
 }
 
 /* -------------------------------------
-15. قائمة الهاتف المحمول | HAMBURGER MENU
+15. HAMBURGER MENU
 ------------------------------------- */
 .hamburger {
     cursor: pointer;
     display: none;
 }
 
-/* تنسيق أشرطة قائمة الهاتف | Style mobile menu bars */
 .bar {
     height: 2px;
     width: 27px;
+
+
     margin: 5px 0;
     opacity: 0.8;
     transition: all 0.3s ease-in-out;
 }
 
-/* تأثيرات فتح وإغلاق قائمة الهاتف | Open/close menu effects */
 .hamburger--open .bar:nth-child(1) {
     transform: translateY(7px) rotate(45deg);
 }
@@ -592,9 +314,9 @@ table tr:hover {
 }
 
 /* -------------------------------------
-16. التجاوب مع الشاشات الصغيرة | MEDIA QUERIES
+16. MEDIA QUERIES (max-width: 650px)
 ------------------------------------- */
-@media (max-width: 768px) {
+@media (max-width: 650px) {
     .nav {
         position: fixed;
         top: 75px;
@@ -682,20 +404,10 @@ table tr:hover {
         stroke-dasharray: 20 300;
         stroke-dashoffset: -32.42;
     }
-
-    .button-group {
-        gap: 5px;
-    }
-
-    .option-button {
-        padding: 6px 10px;
-        font-size: 12px;
-        min-width: 50px;
-    }
 }
 
 /* -------------------------------------
-17. التذييل | FOOTER
+17. FOOTER
 ------------------------------------- */
 
 /* CSS */
@@ -747,121 +459,4 @@ table tr:hover {
 
 .resultSection {
     margin-top: 50px;
-}
-
-/* تحسين مظهر الأزرار في قسم المواد | Improve button appearance in course section */
-.course .button-group {
-    margin-bottom: 20px;
-}
-
-.course .option-button {
-    min-width: 45px;
-    padding: 6px 8px;
-}
-
-/* تحسين مظهر أزرار رمز المادة | Improve course code button appearance */
-.course-code .option-button {
-    font-size: 16px;
-    font-weight: bold;
-    min-width: 40px;
-    padding: 6px 4px;
-}
-
-/* -------------------------------------
-18. زر حفظ PDF | PDF Button
-------------------------------------- */
-.pdf-button-section {
-    margin-top: 20px;
-    text-align: center;
-}
-
-#saveAsPdf {
-    background: #D02024;
-    color: white;
-    padding: 12px 25px;
-    border: none;
-    border-radius: 6px;
-    font-size: 16px;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-}
-
-#saveAsPdf:hover {
-    background: #b01a1d;
-    transform: translateY(-2px);
-    box-shadow: 0 4px 8px rgba(208, 32, 36, 0.2);
-}
-
-#saveAsPdf i {
-    font-size: 18px;
-}
-
-/* تنسيق PDF | PDF Styling */
-@media print {
-    body * {
-        visibility: hidden;
-    }
-    
-    .result, .result * {
-        visibility: visible;
-    }
-    
-    .result {
-        position: absolute;
-        left: 0;
-        top: 0;
-        width: 100%;
-    }
-}
-
-/* تنسيق زر الرئيسية في القائمة */
-.nav__link.btn {
-    background: none;
-    color: #1E191A;
-    padding: 8px 15px;
-    border-radius: 6px;
-    transition: all 0.3s ease;
-}
-
-.nav__link.btn:hover {
-    background: rgba(0, 123, 58, 0.1);
-    color: #007B3A;
-    transform: none;
-}
-
-/* تنسيق اسم المادة والتلميح */
-.course-name {
-    position: relative;
-    cursor: pointer;
-}
-
-.course-name:hover::after {
-    content: 'يمكنك تغيير اسم المادة اختياري';
-    position: absolute;
-    bottom: 100%;
-    right: 50%;
-    transform: translateX(50%);
-    background: rgba(0, 0, 0, 0.8);
-    color: white;
-    padding: 8px 12px;
-    border-radius: 6px;
-    font-size: 13px;
-    white-space: nowrap;
-    margin-bottom: 8px;
-    z-index: 1000;
-}
-
-.course-name:hover::before {
-    content: '';
-    position: absolute;
-    bottom: 100%;
-    right: 50%;
-    transform: translateX(50%);
-    border: 6px solid transparent;
-    border-top-color: rgba(0, 0, 0, 0.8);
-    margin-bottom: -6px;
-    z-index: 1000;
 }
