@@ -1,0 +1,401 @@
+/* -------------------------------------
+1. RESET
+------------------------------------- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    text-decoration: none;
+    list-style: none;
+    cursor: none !important;
+}
+
+/* -------------------------------------
+2. CUSTOM CURSOR
+------------------------------------- */
+.cursor {
+    width: 20px;
+    height: 20px;
+    border: 2px solid #007B3A;
+    border-radius: 50%;
+    position: fixed;
+    pointer-events: none;
+    z-index: 9999;
+    transition: transform 0.2s ease;
+    transform: translate(-50%, -50%);
+}
+
+.cursor-dot {
+    width: 8px;
+    height: 8px;
+    background: #007B3A;
+    border-radius: 50%;
+    position: fixed;
+    pointer-events: none;
+    z-index: 9999;
+    transition: transform 0.1s ease;
+    transform: translate(-50%, -50%);
+}
+
+.cursor-hover {
+    transform: translate(-50%, -50%) scale(1.5);
+    background: rgba(0, 123, 58, 0.1);
+    border-color: #007B3A;
+}
+
+.cursor-dot-hover {
+    transform: translate(-50%, -50%) scale(0.5);
+    background: #007B3A;
+}
+
+/* -------------------------------------
+3. BASE
+------------------------------------- */
+body {
+    font-family: 'Poppins', sans-serif;
+    background: #ffffff;
+    color: #1E191A;
+    line-height: 1.6;
+    margin: 0;
+    height: 100%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.wrapper {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+.container {
+    max-width: 1200px;
+    width: 90%;
+    margin: 120px auto 80px;
+    padding: 0 20px;
+}
+
+/* -------------------------------------
+4. HERO SECTION
+------------------------------------- */
+.hero-section {
+    text-align: center;
+    padding: 40px 0;
+    animation: fadeIn 0.5s ease-in-out;
+}
+
+.hero-section h1 {
+    color: #007B3A;
+    font-size: 36px;
+    margin-bottom: 20px;
+    position: relative;
+    padding-bottom: 15px;
+}
+
+.hero-section h1::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 150px;
+    height: 3px;
+    background: #007B3A;
+    border-radius: 2px;
+}
+
+.hero-text {
+    font-size: 20px;
+    color: #333;
+    margin-bottom: 50px;
+}
+
+/* -------------------------------------
+5. FEATURES GRID
+------------------------------------- */
+.features-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 30px;
+    margin-top: 40px;
+}
+
+.feature-card {
+    background: #f8f9fa;
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    text-align: center;
+}
+
+.feature-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+}
+
+.feature-card i {
+    font-size: 40px;
+    color: #007B3A;
+    margin-bottom: 20px;
+}
+
+.feature-card h3 {
+    color: #007B3A;
+    font-size: 24px;
+    margin-bottom: 15px;
+}
+
+.feature-card p {
+    color: #666;
+    margin-bottom: 20px;
+}
+
+.feature-link {
+    display: inline-block;
+    padding: 10px 25px;
+    background: #007B3A;
+    color: white;
+    border-radius: 8px;
+    transition: background 0.3s ease;
+}
+
+.feature-link:hover {
+    background: #005c2c;
+}
+
+/* -------------------------------------
+6. ANIMATIONS
+------------------------------------- */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* -------------------------------------
+7. HEADER & FOOTER STYLES
+------------------------------------- */
+.header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background: rgba(0, 0, 0, 0.2);
+    border: none;
+    box-shadow: none;
+    margin: 0;
+    padding: 0;
+    z-index: 1000;
+}
+
+.bottom-bar {
+    backdrop-filter: blur(10px);
+    bottom: 0;
+    left: 0;
+}
+
+.bottom-bar__content {
+    min-height: 60px;
+    max-width: 1200px;
+    padding: 0 30px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: row-reverse;
+}
+
+.logo {
+    display: flex;
+    column-gap: 10px;
+    align-items: center;
+    vertical-align: middle;
+}
+
+.logo__img {
+    height: 50px;
+}
+
+.nav {
+    transition: all 0.3s ease-in-out;
+}
+
+.nav__list {
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: flex-end;
+    column-gap: 40px;
+}
+
+.nav__link {
+    text-decoration: none;
+    transition: all 0.2s;
+}
+
+.nav--open {
+    left: 50% !important;
+}
+
+.footer {
+    background: rgba(0, 0, 0, 0.2);
+    text-align: center;
+    padding: 1rem 0;
+    box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.footer__content p {
+    margin: 0.25rem 0;
+    font-size: 0.9rem;
+    color: #333;
+}
+
+.footer__content a {
+    color: #007B3A;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+/* -------------------------------------
+8. HAMBURGER MENU
+------------------------------------- */
+.hamburger {
+    cursor: pointer;
+    display: none;
+}
+
+.bar {
+    height: 2px;
+    width: 27px;
+    margin: 5px 0;
+    opacity: 0.8;
+    transition: all 0.3s ease-in-out;
+}
+
+.hamburger--open .bar:nth-child(1) {
+    transform: translateY(7px) rotate(45deg);
+}
+
+.hamburger--open .bar:nth-child(2) {
+    opacity: 0;
+}
+
+.hamburger--open .bar:nth-child(3) {
+    transform: translateY(-7px) rotate(-45deg);
+}
+
+/* -------------------------------------
+9. RESPONSIVE DESIGN
+------------------------------------- */
+@media (max-width: 768px) {
+    .container {
+        width: 95%;
+        margin-top: 100px;
+    }
+
+    .hero-section h1 {
+        font-size: 28px;
+    }
+
+    .hero-text {
+        font-size: 18px;
+    }
+
+    .features-grid {
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 20px;
+    }
+
+    .feature-card {
+        padding: 20px;
+    }
+
+    .feature-card i {
+        font-size: 32px;
+    }
+
+    .feature-card h3 {
+        font-size: 20px;
+    }
+}
+
+@media (max-width: 650px) {
+    .nav {
+        position: fixed;
+        top: 75px;
+        left: -100%;
+        transform: translateX(-50%);
+        width: 90%;
+        max-width: 400px;
+        padding: 15px 20px;
+        text-align: center;
+        background: rgba(179, 179, 179, 0.8);
+        backdrop-filter: blur(30px);
+        -webkit-backdrop-filter: blur(30px);
+        border-radius: 15px;
+        border: 1px solid rgba(245, 12, 12, 0.99);
+        box-shadow: 0 8px 16px rgba(255, 0, 0, 0.404);
+        transition: left 0.4s ease-in-out, opacity 0.3s ease-in-out;
+    }
+
+    .nav__list {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        row-gap: 20px;
+        padding: 10px 0;
+    }
+
+    .nav__link {
+        font-size: 15px;
+        font-weight: bold;
+        color: #007B3A;
+        text-transform: uppercase;
+        transition: color 0.2s ease-in-out;
+    }
+
+    .nav__link:hover {
+        color: #007B3A;
+    }
+
+    .hamburger {
+        display: block;
+    }
+
+    .hamburger input {
+        display: none;
+    }
+
+    .hamburger svg {
+        height: 3em;
+        transition: transform 600ms cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .line {
+        fill: none;
+        stroke: rgb(197, 15, 15);
+        stroke-linecap: round;
+        stroke-linejoin: round;
+        stroke-width: 3;
+        transition: stroke-dasharray 600ms cubic-bezier(0.4, 0, 0.2, 1),
+            stroke-dashoffset 600ms cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .line-top-bottom {
+        stroke-dasharray: 12 63;
+    }
+
+    .hamburger input:checked+svg {
+        transform: rotate(-45deg);
+    }
+
+    .hamburger input:checked+svg .line-top-bottom {
+        stroke-dasharray: 20 300;
+        stroke-dashoffset: -32.42;
+    }
+} 
