@@ -9,7 +9,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
   <link rel="icon" href="IMG/Nashama.webp">
-  <link rel="stylesheet" href="CSS/GPA.css">
+  <link rel="stylesheet" href="./css/GPA.css">
 </head>
 
 <body>
@@ -55,42 +55,39 @@
       </div>
     </div>
   </header>
-  
+
   <div class="container">
     <!-- قسم اختيار الفصل الأول -->
-    <label for="isFirstSemester"><i class="fas fa-calendar-alt"></i> هل هذا فصلك الأول؟</label>
-    <select id="isFirstSemester">
-      <option value="yes" selected>نعم</option>
-      <option value="no">لا</option>
-    </select>
+    <label><i class="fas fa-calendar-alt"></i> هل هذا فصلك الأول؟</label>
+    <div class="button-group" id="isFirstSemester">
+      <button class="option-button selected" data-value="yes">نعم</button>
+      <button class="option-button" data-value="no">لا</button>
+    </div>
 
     <!-- يظهر فقط إذا كانت الإجابة لا -->
     <div id="studentStatusSection" class="hidden">
-      <label for="studentStatus"><i class="fas fa-user-check"></i> وضع الطالب</label>
-      <select id="studentStatus">
-        <option value="دراسة منتظمة" selected>دراسة منتظمة</option>
-        <option value="إنذار أول">إنذار أول</option>
-        <option value="إنذار نهائي">إنذار نهائي</option>
-        <option value="دراسة خاصة 1">دراسة خاصة 1</option>
-        <option value="دراسة خاصة 2">دراسة خاصة 2</option>
-        <option value="دراسة خاصة 3">دراسة خاصة 3</option>
-      </select>
+      <label><i class="fas fa-user-check"></i> وضع الطالب</label>
+      <div class="button-group" id="studentStatus">
+        <button class="option-button selected" data-value="دراسة منتظمة">دراسة منتظمة</button>
+        <button class="option-button" data-value="إنذار أول">إنذار أول</button>
+        <button class="option-button" data-value="إنذار نهائي">إنذار نهائي</button>
+        <button class="option-button" data-value="دراسة خاصة 1">دراسة خاصة 1</button>
+        <button class="option-button" data-value="دراسة خاصة 2">دراسة خاصة 2</button>
+        <button class="option-button" data-value="دراسة خاصة 3">دراسة خاصة 3</button>
+      </div>
 
+      <label><i class="fas fa-calendar-week"></i> نوع الفصل</label>
+      <div class="button-group" id="semesterType">
+        <button class="option-button selected" data-value="نظامي">نظامي</button>
+        <button class="option-button" data-value="صيفي">صيفي</button>
+      </div>
 
-      <label for="semesterType"><i class="fas fa-calendar-week"></i> نوع الفصل</label>
-      <select id="semesterType">
-        <option value="نظامي" selected>نظامي</option>
-        <option value="صيفي">صيفي</option>
-      </select>
-
-      <label for="isFirstMajor"><i class="fas fa-user-graduate"></i> هل هذا تخصصك الأول في الجامعة الاردنية ؟
-      </label>
-      <select id="isFirstMajor">
-        <option value="yes" selected>نعم</option>
-        <option value="no">لا</option>
-      </select>
+      <label><i class="fas fa-user-graduate"></i> هل هذا تخصصك الأول في الجامعة الاردنية؟</label>
+      <div class="button-group" id="isFirstMajor">
+        <button class="option-button selected" data-value="yes">نعم</button>
+        <button class="option-button" data-value="no">لا</button>
+      </div>
     </div>
-
 
     <!-- قسم إدخال المعدل التراكمي القديم -->
     <div id="previousDataSection" class="hidden">
@@ -102,16 +99,16 @@
     </div>
 
     <!-- قسم اختيار عدد المواد -->
-    <label for="courseCount"><i class="fas fa-book"></i>عدد المواد</label>
-    <select id="courseCount">
-      <option value="1">1</option>
-      <option value="2">2</option>
-      <option value="3">3</option>
-      <option value="4" selected>4</option>
-      <option value="5">5</option>
-      <option value="6">6</option>
-      <option value="7">7</option>
-    </select>
+    <label><i class="fas fa-book"></i>عدد المواد</label>
+    <div class="button-group" id="courseCount">
+      <button class="option-button" data-value="1">1</button>
+      <button class="option-button" data-value="2">2</button>
+      <button class="option-button" data-value="3">3</button>
+      <button class="option-button selected" data-value="4">4</button>
+      <button class="option-button" data-value="5">5</button>
+      <button class="option-button" data-value="6">6</button>
+      <button class="option-button" data-value="7">7</button>
+    </div>
 
     <!-- قسم المواد -->
     <section id="coursesContainer"></section>
@@ -120,7 +117,7 @@
     <section>
       <button id="calculateButton">احسب المعدل</button>
     </section>
-    
+
 
     <section>
       <button id="resetButton" class="hidden">حساب معدل جديد</button>
@@ -129,12 +126,6 @@
     <!-- قسم عرض النتائج -->
     <section id="resultSection" class="hidden result"></section>
   </div>
-  
-  
-  
-  
-  
-
 
   <footer class="footer">
     <div class="footer__content">
@@ -142,10 +133,8 @@
       <p>تصميم وتطوير: <a href="https://www.instagram.com/abdulhadi.jebreen/" target="_blank"> عبد الهادي</a></p>
     </div>
 
-    <script src="JS/GPA.js"></script>
-    <!-- ملف JavaScript -->
-
-
+    <script src="./js/GPA.js"></script>
+  </footer>
 </body>
 
 </html>
